@@ -72,8 +72,8 @@ class Workplace extends Component {
           <div className="text">{this._renderText()}</div>
         </CardText>
         <CardActions>
-          <FlatButton label="Show answers" onClick={this._showAnswers}/>
-          <FlatButton label="Next" onClick={this.props.goNext}/>
+          <FlatButton label="Zobrazit správné odpovědi" onClick={this._showAnswers}/>
+          <FlatButton label="Pokračovat" onClick={this.props.goNext}/>
         </CardActions>
       </Card>
     );
