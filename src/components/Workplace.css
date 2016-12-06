@@ -1,3 +1,7 @@
 .text {
     font-size: 18px;
 }
+
+.text span {
+    white-space: nowrap;
+}
