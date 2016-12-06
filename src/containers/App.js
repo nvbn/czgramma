@@ -8,8 +8,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import reducers from '../reducers';
 import FetchRandom from './FetchRandom';
 import Workplace from './Workplace';
-// import logo from './logo.svg';
-// import './App.css';
 
 const store = createStore(
   reducers,
@@ -24,8 +22,8 @@ class App extends Component {
         <Provider store={store}>
           <Router history={history}>
             <Route path="/" component={FetchRandom}/>
-            <Route path="/czgramma/" component={FetchRandom}/>
-            <Route path="/czgramma/article/:title" component={Workplace}/>
+            <Route path="/" component={FetchRandom}/>
+            <Route path="/article/:title" component={Workplace}/>
           </Router>
         </Provider>
       </MuiThemeProvider>
