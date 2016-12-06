@@ -30,6 +30,8 @@ class Input extends Component {
 
   render() {
     return (<TextField style={{width: this._getWidth()}}
+                       autoCapitalize="off"
+                       autoCorrect="off"
                        id={`${this.props.id}-input`}
                        className='input-field'
                        onChange={this._onChange}
