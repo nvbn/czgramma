@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import { ENDS } from '../constants';
 import Input from './Input';
 import './Workplace.css';
 
@@ -15,26 +16,42 @@ class Workplace extends Component {
     this.props.fetchArticle(this.props.title);
   }
 
-  _shouldAddInput(word) {
-    return (
-      word.length > 4 &&
-      word.search(/[.,\/#!$%\^&\*;:{}=\-_`~()]/) === -1 &&
-      Math.random() > 0.3
-    );
+  _getPossibleEnd(word) {
+    if (word.length < 4) {
+      return null;
+    }
+
+    for (const end of ENDS) {
+      if (word.endsWith(end) && (word.length - end.length) > 3) {
+        return end;
+      }
+    }
+
+    return null;
+  }
+
+  _extractWord(part) {
+    const matched = part.match(/([.,\/#!$%\^&\*;:{}=\-_`~()]*)([^.,\/#!$%\^&\*;:{}=\-_`~()]*)([.,\/#!$%\^&\*;:{}=\-_`~()]*)/);
+    return matched.slice(1);
   }
 
   _renderText() {
     // TODO: add proper check for endings
-    return this.props.article.content.split(' ').map((word, n) => {
-      if (!this._shouldAddInput(word)) {
-        return (<span key={`word-${n}`}>{word}{" "}</span>);
+    return this.props.article.content.split(' ').map((part, n) => {
+      const [before, word, after] = this._extractWord(part);
+      const possibleEnd = this._getPossibleEnd(word);
+
+      if (!possibleEnd) {
+        return (<span key={`word-${n}`}>{part}{" "}</span>);
       } else {
         return (
           <span key={`word-${n}`}>
-            {word.slice(0, -3)}
-            <Input key={`word-end-${n}`}
-                   value={word.slice(-3)}
+            {before}
+            {word.slice(0, -possibleEnd.length)}
+            <Input id={`word-end-${n}`}
+                   value={possibleEnd}
                    showAnswer={this.state.showAnswers}/>
+            {after}
             {" "}
           </span>
         );

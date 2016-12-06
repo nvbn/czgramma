@@ -30,7 +30,7 @@ class Input extends Component {
 
   render() {
     return (<TextField style={{width: this._getWidth()}}
-                       id={`${this.props.key}-input`}
+                       id={`${this.props.id}-input`}
                        className='input-field'
                        onChange={this._onChange}
                        underlineStyle={{borderColor: this._getColor()}}
