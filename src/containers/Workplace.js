@@ -10,7 +10,7 @@ const mapStateToProps = ({article}, {params}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
-  {fetchArticle, goNext: () => push('/')},
+  {fetchArticle, goNext: () => push('/czgramma/')},
   dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Workplace);

@@ -24,7 +24,8 @@ class App extends Component {
         <Provider store={store}>
           <Router history={history}>
             <Route path="/" component={FetchRandom}/>
-            <Route path="/article/:title" component={Workplace}/>
+            <Route path="/czgramma/" component={FetchRandom}/>
+            <Route path="/czgramma/article/:title" component={Workplace}/>
           </Router>
         </Provider>
       </MuiThemeProvider>
