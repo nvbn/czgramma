@@ -1,6 +1,7 @@
 export const WIKI_API = 'https://cs.wikipedia.org/w/api.php?';
 
 export const ACTION_ARTICLE_FETCHED = 'ACTION_ARTICLE_FETCHED';
+export const ACTION_FETCH_RANDOM_ARTICLE = 'ACTION_FETCH_RANDOM_ARTICLE';
 
 export const ENDS = [
   'etem',

@@ -5,7 +5,10 @@ import * as constants from './constants';
 export const fetchRandomArticle = () => (dispatch) => {
   fetchJsonp(`${constants.WIKI_API}action=query&list=random&rnlimit=1&rnnamespace=0&format=json`)
     .then((response) => response.json())
-    .then((json) => dispatch(push(`/article/${json.query.random[0].title}`)));
+    .then((json) => {
+      dispatch(push(`/article/${json.query.random[0].title}`));
+      dispatch({type: constants.ACTION_FETCH_RANDOM_ARTICLE});
+    });
 };
 
 export const fetchArticle = (title) => (dispatch) => {

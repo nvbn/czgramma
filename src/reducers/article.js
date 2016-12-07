@@ -10,6 +10,12 @@ export default (state = initialState, action) => {
         title: action.title,
         content: action.content,
       };
+    case constants.ACTION_FETCH_RANDOM_ARTICLE:
+      return {
+        ...state,
+        title: '',
+        content: '',
+      };
     default:
       return state;
   }
