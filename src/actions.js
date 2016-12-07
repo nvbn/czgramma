@@ -13,8 +13,13 @@ export const fetchArticle = (title) => (dispatch) => {
     .then((response) => response.json())
     .then((json) => {
       const pages = json.query.pages;
-      const pageId = Object.getOwnPropertyNames(pages);
-      dispatch(articleFetched(title, pages[pageId].extract));
+      const pageId = Object.getOwnPropertyNames(pages)[0];
+
+      if (pageId && pageId !== '-1') {
+        dispatch(articleFetched(title, pages[pageId].extract));
+      } else {
+        dispatch(push('/404'));
+      }
     });
 };
 
