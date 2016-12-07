@@ -19,12 +19,12 @@ class Input extends Component {
   }
 
   _getColor() {
-    if (this.props.showAnswer || !this.state.userValue) {
-      return blue500;
-    } else if (this.state.userValue === this.props.value) {
+    if (this.state.userValue === this.props.value) {
       return green500;
-    } else {
+    } else if (this.state.userValue && this.state.userValue !== this.props.value) {
       return red500;
+    } else if (this.props.showAnswer || !this.state.userValue) {
+      return blue500;
     }
   }
 
